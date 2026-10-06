@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>For You 💗</title>
 
 <style>
 *{
@@ -237,7 +237,8 @@ p{
 
 <button id="musicBtn">🎵</button>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic"loop preload="auto">
+  <source src="Ajab_Prem_Ki_Ghazab_Kahani,_2009___Attitude_bio_for_instagram,_Vintage_bollywood_aesthetic,_Old_bollywood_songs.mp4" type="video/mp4">
   <!-- Optional: put your music file/link here -->
 </audio>
 
@@ -279,30 +280,42 @@ const musicBtn =
 
 let currentGame = 0;
 let score = 0;
-let musicPlaying = false;
+
 
 
 /* ==========================================
    MUSIC
    ========================================== */
+function playMusic(){
+
+  music.volume = 0.65;
+
+  music.play().then(()=>{
+
+    musicBtn.innerText = "🔊";
+
+  }).catch(()=>{
+
+    musicBtn.innerText = "🎵";
+
+  });
+}
 
 musicBtn.onclick = function(){
 
-  if(!music.src || music.src === window.location.href){
-    alert("Add your music file/link inside the audio tag first ❤️");
-    return;
-  }
-
   if(music.paused){
-    music.play();
-    musicBtn.innerText = "🔊";
-    musicPlaying = true;
+
+    playMusic();
+
   }else{
+
     music.pause();
     musicBtn.innerText = "🔇";
-    musicPlaying = false;
+
   }
+
 };
+
 
 
 /* ==========================================
